@@ -1,24 +1,26 @@
 close all
 
 %define system parameters (the same thing in system model function)
-global J5 m10 K8 radius x1 R1 C2 e1 e2 f3 h 
+global J5 m10 K8 radius x1 R1 C2 e1 e2 f3 h R4  
 
-h = 0.17; 
+h = 0.5; 
 J5 = 2; 
 m10 = .033 ;  
 K8 = 5.07 ; 
 radius = 0.05 ;  
-f3 = sqrt(2*9.81*h) ; 
-R1 = 3497.48; %3497.48
-C2 = 0.000001987  ; %0.000001987  
+f3 = 0.00001256637061*sqrt(2*9.81*h) ; 
+R1 = 283295.7987; %3497.48
+C2 = 0.00001019367992  ; %0.000001987  
 e1 = 1.1*0.5 ; %1.1*0.5
 e2 = m10*9.81;   
+R4 = 10; 
+
 %%
 % tspan= time span for simulation,  x0 = initial condition , x(1)=q5  x(2)=p2
 %  x(3)=P6    , System model is in msd_system function 
 
-tspan=[0 50];
-x0=[0.2;0;2;0.2];
+tspan=[0 20];
+x0=[0.05;0;0.385;0];
 
 [T,x]=ode45(@msd_system,tspan,x0);
 %% 
